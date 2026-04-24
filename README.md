@@ -1,20 +1,36 @@
 # 🛒 Products API (Express + MongoDB)
 
-A simple CRUD API for managing products built with **Node.js, Express, and MongoDB (Mongoose)**.
+A backend REST API for managing products and user authentication built with **Node.js, Express, and MongoDB Atlas**.
 
-This project is part of my MERN Stack mastery journey.
+This project is part of my **MERN Stack Mastery Journey**, focused on building production-style backend systems with clean architecture.
 
 ---
 
 ## 🚀 Features
 
+### 📦 Products CRUD
+
 - Create a product
 - Get all products
-- Get a single product
+- Get a single product by ID
 - Update a product
 - Delete a product
+
+### 🔐 Authentication
+
+- User signup
+- Password hashing
+- Request validation with Joi
+- Secure middleware setup
+
+### ⚙️ Backend Features
+
 - MongoDB Atlas integration
-- RESTful API design
+- RESTful API structure
+- Environment variable support with dotenv
+- Security headers with Helmet
+- Cross-Origin Resource Sharing (CORS)
+- Cookie parsing support
 
 ---
 
@@ -24,34 +40,85 @@ This project is part of my MERN Stack mastery journey.
 - Express.js
 - MongoDB Atlas
 - Mongoose
+- Joi
+- bcrypt / hashing utilities
 - dotenv
+- Helmet
 - CORS
+- cookie-parser
+- Nodemon
 
 ---
 
 ## 📁 Project Structure
-product-api/
+
+```text
+products-api/
+│── controllers/
+│   └── auth.controller.js
+│
+│── middlewares/
+│   └── validator.js
+│
 │── models/
-│ └── product.model.js
+│   ├── product.model.js
+│   └── users.model.js
+│
 │── routes/
-│ └── product.routes.js
+│   ├── product.routes.js
+│   └── auth.routes.js
+│
+│── utils/
+│   └── hashing.js
+│
+│── index.js
 │── server.js
 │── .env
 │── package.json
-│── index.js
 
 
----
-
-## ⚙️ Installation
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/MugandaJames/MERN-stack-mastery.git
-
+⚙️ Installation
+1. Clone the repository
+git clone git@github.com:MugandaJames/MERN-stack-mastery.git
+cd MERN-stack-mastery
+2. Install dependencies
+npm install
+3. Create .env
+MONGO_URI=your_mongodb_connection_string
+4. Run development server
+npm run dev
+🌐 API Endpoints
+Products
+Method	Endpoint	Description
+GET	/products	Get all products
+GET	/products/:id	Get one product
+POST	/products	Create product
+PUT	/products/:id	Update product
+DELETE	/products/:id	Delete product
+Auth
+Method	Endpoint	Description
+POST	/api/auth/signup	Register new user
 🧪 Testing
 
 You can test the API using:
-Insomnia---Found it reliable
 
+Insomnia (found reliable)
+Postman
+Thunder Client (VS Code)
+📚 Learning Goals
+
+This project is helping me strengthen skills in:
+
+Express.js architecture
+MongoDB + Mongoose
+REST API development
+Authentication systems
+Validation patterns
+Real-world backend workflows
+
+
+👨‍💻 Author
+
+James Juma
+Building strong full-stack systems one project at a time.
+```
