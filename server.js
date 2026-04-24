@@ -3,9 +3,11 @@ const mongoose = require('mongoose');
 require("dotenv").config();
 
 const productRoutes = require("./routes/product.routes.js");
+const authRoutes = require("./routes/auth.routes.js");
 
 
-app.use('/products', productRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/auth', authRoutes);
 
 // server 
 
