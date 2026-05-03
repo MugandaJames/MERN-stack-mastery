@@ -28,4 +28,64 @@ exports.signinSchema = Joi.object({
 });
 
 
+exports.acceptCodeSchema = Joi.object({
+    email: Joi.string()
+        .min(6)
+        .max(60)
+        .required()
+        .email({
+            tlds: { allow: ['com', 'net'] }
+        }),
+    providedCode: Joi.number().required()
+})
+
+
+exports.changePasswordSchema = Joi.object({
+    NewPassword: Joi.string()
+        .required()
+        .pattern(
+            new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')
+        ),
+    
+    OldPassword: Joi.string()
+        .required()
+        .pattern(
+            new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')
+        ),
+
+});
+
+
+exports.acceptFPCodeSchema = Joi.object({
+    email: Joi.string()
+        .min(6)
+        .max(60)
+        .required()
+        .email({
+            tlds: { allow: ['com', 'net'] }
+        }),
+    NewPassword: Joi.string()
+        .required()
+        .pattern(
+            new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')
+    ),
+    providedCode: Joi.number().required()
+});
+
+
+exports.createPostSchema = Joi.object({
+    title: Joi.string()
+        .min(3)
+        .max(60)
+        .required(),
+    
+    description: Joi.string()
+        .min(3)
+        .max(600)
+        .required(),
+    
+    userId: Joi.string().required()
+});
+
+
 

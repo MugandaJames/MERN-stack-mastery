@@ -55,18 +55,23 @@ This project is part of my **MERN Stack Mastery Journey**, focused on building p
 ```text
 products-api/
 │── controllers/
-│   └── auth.controller.js
+│   ├── auth.controller.js
+│   └── posts.controller.js
 │
 │── middlewares/
-│   └── validator.js
+│   ├── validator.js
+│   ├── sendMail.js
+│   └── identification.js
 │
 │── models/
 │   ├── product.model.js
-│   └── users.model.js
+│   ├── users.model.js
+│   └── posts.model.js
 │
 │── routes/
 │   ├── product.routes.js
-│   └── auth.routes.js
+│   ├── auth.routes.js
+│   └── posts.routes.js
 │
 │── utils/
 │   └── hashing.js
@@ -76,7 +81,6 @@ products-api/
 │── .env
 │── package.json
 
-
 ⚙️ Installation
 1. Clone the repository
 git clone git@github.com:MugandaJames/MERN-stack-mastery.git
@@ -85,6 +89,10 @@ cd MERN-stack-mastery
 npm install
 3. Create .env
 MONGO_URI=your_mongodb_connection_string
+TOKEN_SECRET = your secret
+NODE_CODE_SENDING_EMAIL_ADDRESS = your sending email address
+NODE_CODE_SENDING_EMAIL_PASSWORD = your app password
+HMAC_VERIFICATION_CODE_SECRET = your secret
 4. Run development server
 npm run dev
 🌐 API Endpoints
@@ -96,8 +104,25 @@ POST	/products	Create product
 PUT	/products/:id	Update product
 DELETE	/products/:id	Delete product
 Auth
-Method	Endpoint	Description
-POST	/api/auth/signup	Register new user
+Method	    Endpoint	                                 Description
+POST	/api/auth/signup	                             Register new user
+POST    /api/auth/signin                                 Login user
+POST    /api/auth/signout                                Logout user
+
+PATCH   /api/auth/send-verification-code                 sendVerificationCode
+PATCH   /api/auth/verify-verification-code               verifyVerificationCode
+PATCH   /api/auth/change-password                        changePassword
+PATCH   /api/auth/send-forgot-password-code              sendForgotPasswordCode
+PATCH   /api/auth/verify-forgot-password-code            verifyForgotPasswordCode
+
+Posts
+GET     /api/posts/all-posts                             getPosts
+GET     /api/posts/single-post                           singlePost
+POST    /api/posts/create-post                           createPost
+
+
+PUT     /api/posts/update-post                           updatePost
+DELETE  /api/posts/delete-post                           deletePost
 🧪 Testing
 
 You can test the API using:
